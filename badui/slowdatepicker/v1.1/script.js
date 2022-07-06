@@ -47,7 +47,7 @@ $(document).ready(function () {
                         break;
                     default:
                         $("#form-error").html("The birth date "+
-getFormattedDate(date, true)+" is alredy taken by an user with the username 'YourSecretTwin'");
+getFormattedDate(date)+" is alredy taken by an user with the username 'YourSecretTwin'");
                         state++;
                         break;
                 }
@@ -76,9 +76,7 @@ function getFormattedDate(date_to_format, reverse=false) {
     while (day.length<2) {
         day="0"+day;
     }
-    if (reverse)
-        return day+"-"+month+"-"+year;
-    return year+"-"+month+"-"+day;
+    return day+"-"+month+"-"+year;
 }
 
 function getFormattedTime(date_to_format) {
