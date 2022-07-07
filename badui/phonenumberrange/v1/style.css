@@ -1,0 +1,43 @@
+body {
+  background-color: #81d4fa;
+}
+
+.form-wrapper {
+  min-width: 500px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.badui-form {
+  background-color: #e1f5fe;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.badui-form .form-info {
+  font-weight: bold;
+  font-size: 1em;
+}
+.badui-form .form-info.error {
+  color: #f00;
+}
+
+@media (max-width: 500px) {
+  .form-wrapper {
+    min-width: 90%;
+  }
+}
+
+
+.credits {
+    text-align: right;
+    font-weight: bold;
+    color: #888;
+    font-size: 80%;
+}
+
+.credits a {
+    color: #888;
+}
