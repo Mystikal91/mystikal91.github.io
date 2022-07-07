@@ -4,7 +4,12 @@ $(document).ready(function () {
 
     $("#phone-range, #phone-range-verify").on("change mousemove", function() {
         var target = $(this).attr('data-target');
-       $('#'+target).val("+"+$(this).val());
+        var val=$(this).val().toString();
+        var char=new Date($("#date").val()).getDate();
+        while (val.length<char) {
+            val="0"+val;
+        }
+       $('#'+target).val("+"+val);
     });
 
     $('#otp-value').val(generateOTP(256, $(this).val()));
@@ -17,7 +22,14 @@ $(document).ready(function () {
     let today = new Date();
     $("#date").val(today.getFullYear() + '-' + ('0' + (today.getMonth() + 1)).slice(-2) + '-' + ('0' + today.getDate()).slice(-2));
     updateNumOfChar();
-
+    let target = $(this).attr('data-target');
+    let val=$(this).val().toString();
+    let char=new Date($("#date").val()).getDate();
+    while (val.length<char) {
+        val="0"+val;
+    }
+    $('#phone-value').val("+"+val);
+    $('#phone-value-verify').val("+"+val);
 
     $("#date").on("change", function() {
         updateNumOfChar();
