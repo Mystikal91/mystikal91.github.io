@@ -10,7 +10,7 @@ class GameController {
     }
     #time_between_spawns = 2500; // Milliseconds between spawn
     #spawn_reducer_coefficient = 0.95 // How much, in percentage, will decrease the spawn time between ducks
-    #max_duck = 10; // Max number of duck
+    #max_duck = 30; // Max number of duck
     #spawner;
     #clock;
     #credentialManager;
