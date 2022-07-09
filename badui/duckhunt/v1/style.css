@@ -187,6 +187,7 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
   animation: flashing-white 0.08s step-start 1, duck-flying 0.20s steps(3) infinite alternate;
 }
 .credential-wrapper {
+  pointer-events: none;
   position: absolute;
 }
 .credential-wrapper div {
