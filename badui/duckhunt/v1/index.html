@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sign in to Badooi</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><!-- CSS only -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="style.css"></script>
+  <script src="./classes/credentialManager.js"></script>
+  <script src="./classes/gameController.js"></script>
+  <script src="./classes/duck.js"></script>
+  <script src="script.js"></script>
+</head>
+<body class="enable-effect">
+    <div class="container">
+      <div class="form-wrapper">
+          <form class="badui-form">
+            <h1>Sign in to Badooi</h1>
+              <div class="form-group">
+                <button class="btn btn-success btn-lg" id="open-duckhunt" >Login</button>
+              </div>
+              <div class="disclaimer mt-4 mb-2">
+                The following login form uses flashing light to emulate an old effect. I have no idea if they are enough to be problematic to people that are sensible to this effect so, please, if needed, disable this effects using the button below, I'm not joking.
+              </div>
+              <div class="form-group">
+                <button class="btn btn-success btn-lg" id="disable-effect" >Disable flashing effect</button>
+              </div>
+          </form>
+          <div class="credits">
+                Made with love by Mystikal91 for <a target="_blank" href="https://www.reddit.com/r/badUIbattles/">r/badUIBattle</a><br>
+                Source code: <a href="https://github.com/Mystikal91/mystikal91.github.io/tree/main/badui/duckhunt/v1">Github.com</a>
+          </div>
+      </div>
+    </div>
+    <div class="duckhunt-wrapper d-none" id="duckhunt-wrapper">
+      <div class="duckhunt-close" id="duckhunt-close"><i class="bi bi-x-circle"></i></div>
+      <div class="duckhunt-canvas">
+        <div class="background"></div>
+        <div class="full-canvas ducks-canvas" id="ducks-canvas">
+        </div>
+        <div class="full-canvas tiled" id="foreground"></div>
+        <div class="full-canvas tiled" id="click-to-play"></div>
+        <div class="ui tiled d-none" id="ui">
+          <div class="credential-wrapper">
+            <ul id="username-list">
+              <li class="cursor"></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+            <ul id="password-list">
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+        </div>
+        <a class="login-button tiled d-none" id="login-button" href="./result.html"></a>
+      </div>
+    </div>
+</body>

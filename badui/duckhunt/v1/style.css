@@ -1,0 +1,584 @@
+body {
+  background-color: #c5e1a5;
+}
+
+.disclaimer {
+  text-align: left;
+}
+
+.form-wrapper {
+  min-width: 500px;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.badui-form {
+  background-color: #e1f5fe;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+@media (max-width: 500px) {
+  .form-wrapper {
+    min-width: 90%;
+  }
+}
+
+.credits {
+    text-align: right;
+    font-weight: bold;
+    color: #888;
+    font-size: 80%;
+}
+
+.credits a {
+    color: #888;
+}
+
+/* Duck hunt styles */
+
+.duckhunt-wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border: 2px #000;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.duckhunt-close {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  cursor: pointer;
+}
+
+.duckhunt-close:hover i::before {
+  content: '\F622';
+}
+
+/* Canvas */
+
+.duckhunt-canvas {
+  position: relative;
+  overflow: hidden;
+}
+
+.duckhunt-canvas .ducks-canvas {
+  position: absolute;
+}
+
+.ducks-canvas .duck-wrapper {
+  position: absolute;
+}
+
+.duckhunt-canvas .tiled {
+  background-position: 0px 0px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  position: absolute;
+}
+
+.duckhunt-canvas .background {
+  background-color: #63adff;
+  width: 256px;
+  height: 240px;
+}
+
+.duckhunt-canvas .full-canvas {
+  width: 256px;
+  height: 240px;
+  top: 0;
+  left: 0;
+}
+
+.duckhunt-canvas #foreground {
+  background-image: url("./assets/foreground.png");
+  -webkit-mask-image:  url("./assets/foreground.png");
+  mask-image: url("./assets/foreground.png");
+  -webkit-mask-size:  cover;
+  mask-size: cover;
+  pointer-events: none;
+}
+.duckhunt-canvas #click-to-play {
+  background-image: url("./assets/click_to_play.png");
+}
+
+.duck-wrapper .sign {
+  background-image: url("./assets/char_sign.png");
+  width: 20px;
+  height: 36px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+}
+
+.duckhunt-canvas .ui {
+  bottom: 0px;
+  left: 0px;
+  width: 256px;
+  height: 35px;
+  background-image: url("./assets/ui.png");
+}
+
+.duckhunt-canvas .login-button {
+  bottom: 14px;
+  right: 14px;
+  width: 53px;
+  height: 21px;
+  background-image: url("./assets/login.png");
+}
+
+.duckhunt-canvas .duck {
+  width: 34px;
+  height: 34px;
+  background-size: auto;
+  position: relative;
+}
+
+.duckhunt-canvas .duck.alive {
+  animation: duck-flying 0.20s steps(3) infinite alternate;
+}
+
+.duckhunt-canvas .duck.alive[direction="N"] {
+  background-position-x: calc(-34px*2);
+}
+.duckhunt-canvas .duck.alive[direction="NE"] {
+  background-position-x: 0;
+}
+.duckhunt-canvas .duck.alive[direction="E"] {
+  background-position-x: calc(-34px*1);
+}
+.duckhunt-canvas .duck.alive[direction="W"] {
+  background-position-x: calc(-34px*1);
+  transform: scaleX(-1);
+}
+.duckhunt-canvas .duck.alive[direction="NW"] {
+  background-position-x: 0;
+  transform: scaleX(-1);
+}
+
+.duckhunt-canvas .duck.dead {
+  animation: duck-falling 0.2s steps(1) 1s infinite;
+  background-position-x: calc(-34px*3);
+  background-position-y: 0;
+}
+
+.duckhunt-canvas .duck-black {
+  background-image: url("./assets/duck_black.png");
+}
+.duckhunt-canvas .duck-blue {
+  background-image: url("./assets/duck_blue.png");
+}
+.duckhunt-canvas .duck-red {
+  background-image: url("./assets/duck_red.png");
+}
+
+body.enable-effect .duckhunt-canvas.playing:active div {
+  animation: flashing-black 0.08s step-start 1;
+}
+
+body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
+  animation: flashing-white 0.08s step-start 1, duck-flying 0.20s steps(3) infinite alternate;
+}
+
+.credential-wrapper ul {
+    list-style: none;
+    position: absolute;
+    left: 34%;
+}
+
+#username-list {
+    top: 9%;
+}
+
+#password-list {
+    top: 32%;
+}
+
+#username-list li, #password-list li {
+    width: calc(7px);
+    height: calc(7px);
+    display: inline-block;
+    background-position-x: -5%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    image-rendering: pixelated;
+    background-image: url("./assets/alphabet.png");
+}
+
+.credential-wrapper li.cursor {
+  animation: blinking 1s steps(1) infinite;
+  background-position-x: calc(36/37*100%) !important;
+}
+
+@keyframes flashing-white {
+  100% { background-color: #fff; background-image: none; }
+}
+
+@keyframes flashing-black {
+  100% { background-color: #000; background-image: none; }
+}
+
+@keyframes duck-flying {
+  0% { background-position-y: 0px}
+  100% { background-position-y: calc(-34px*3)}
+}
+
+@keyframes duck-stalling {
+  100% { transform: scaleX(-1);}
+}
+
+@keyframes duck-falling {
+  0% { background-position-y: calc(-34px*1); transform: none; }
+  50% { background-position-y: calc(-34px*1); transform: scaleX(-1);}
+}
+
+@keyframes blinking {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+}
+/* 2x */
+@media only screen and (min-width: 612px) and (min-height: 580px) {
+    .duckhunt-canvas .background,
+    .duckhunt-canvas .full-canvas {
+      width: calc(256px * 2);
+      height: calc(240px * 2);
+    }
+
+    .duckhunt-canvas .ui {
+      width: calc(256px * 2);
+      height: calc(35px * 2);
+    }
+
+    .duckhunt-canvas .login-button {
+      bottom: calc(14px * 2);
+      right: calc(14px * 2);
+      width: calc(53px * 2);
+      height: calc(21px * 2);
+    }
+
+    .duckhunt-canvas .duck {
+      width: calc(34px * 2);
+      height: calc(34px * 2);
+      background-size: calc(34px*4*2) calc(34px*3*2);
+    }
+
+    .duck-wrapper .sign {
+      width: calc(20px * 2);
+      height: calc(36px * 2);
+      background-size: calc(760px*2) calc(36px*2);
+    }
+
+    @keyframes duck-flying {
+      0% { background-position-y: 0px}
+      100% { background-position-y: calc(-34px*3*2)}
+    }
+
+    .duckhunt-canvas .duck.alive[direction="N"] {
+      background-position-x: calc(-34px*2*2);
+    }
+    .duckhunt-canvas .duck.alive[direction="NE"] {
+      background-position-x: 0;
+    }
+    .duckhunt-canvas .duck.alive[direction="E"] {
+      background-position-x: calc(-34px*2*1);
+    }
+    .duckhunt-canvas .duck.alive[direction="W"] {
+      background-position-x: calc(-34px*2*1);
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.alive[direction="NW"] {
+      background-position-x: 0;
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.dead {
+      background-position-x: calc(-34px*2*3);
+    }
+
+    @keyframes duck-falling {
+      0% { background-position-y: calc(-34px*2*1); transform: none; }
+      50% { background-position-y: calc(-34px*2*1); transform: scaleX(-1);}
+    }
+
+    #username-list li, #password-list li {
+        width: calc(7px*2);
+        height: calc(7px*2);
+    }
+
+}
+
+/* 3x */
+@media only screen and (min-width: 868px) and (min-height: 820px){
+    .duckhunt-canvas .background,
+    .duckhunt-canvas .full-canvas {
+      width: calc(256px * 3);
+      height: calc(240px * 3);
+    }
+
+    .duckhunt-canvas .ui {
+      width: calc(256px * 3);
+      height: calc(35px * 3);
+    }
+
+    .duckhunt-canvas .login-button {
+      bottom: calc(14px * 3);
+      right: calc(14px * 3);
+      width: calc(53px * 3);
+      height: calc(21px * 3);
+    }
+
+    .duckhunt-canvas .duck {
+      width: calc(34px * 3);
+      height: calc(34px * 3);
+      background-size: calc(34px*4*3) calc(34px*3*3);
+    }
+
+    .duck-wrapper .sign {
+      width: calc(20px * 3);
+      height: calc(36px * 3);
+      background-size: calc(760px*3) calc(36px*3);
+    }
+
+    @keyframes duck-flying {
+      0% { background-position-y: 0px}
+      100% { background-position-y: calc(-34px*3*3)}
+    }
+    .duckhunt-canvas .duck.alive[direction="N"] {
+      background-position-x: calc(-34px*3*2);
+    }
+    .duckhunt-canvas .duck.alive[direction="NE"] {
+      background-position-x: 0;
+    }
+    .duckhunt-canvas .duck.alive[direction="E"] {
+      background-position-x: calc(-34px*3*1);
+    }
+    .duckhunt-canvas .duck.alive[direction="W"] {
+      background-position-x: calc(-34px*3*1);
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.alive[direction="NW"] {
+      background-position-x: 0;
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.dead {
+      background-position-x: calc(-34px*3*3);
+    }
+    @keyframes duck-falling {
+      0% { background-position-y: calc(-34px*3*1); transform: none; }
+      50% { background-position-y: calc(-34px*3*1); transform: scaleX(-1);}
+    }
+    #username-list li, #password-list li {
+        width: calc(7px*3);
+        height: calc(7px*3);
+    }
+
+}
+
+/* 4x */
+@media only screen and (min-width: 1124px) and (min-height: 1060px){
+    .duckhunt-canvas .background,
+    .duckhunt-canvas .full-canvas {
+      width: calc(256px * 4);
+      height: calc(240px * 4);
+    }
+
+    .duckhunt-canvas .ui {
+      width: calc(256px * 4);
+      height: calc(35px * 4);
+    }
+
+    .duckhunt-canvas .login-button {
+      bottom: calc(14px * 4);
+      right: calc(14px * 4);
+      width: calc(53px * 4);
+      height: calc(21px * 4);
+    }
+
+    .duckhunt-canvas .duck {
+      width: calc(34px * 4);
+      height: calc(34px * 4);
+      background-size: calc(34px*4*4) calc(34px*3*4);
+    }
+
+    .duck-wrapper .sign {
+      width: calc(20px * 4);
+      height: calc(36px * 4);
+      background-size: calc(760px*4) calc(36px*4);
+    }
+
+    @keyframes duck-flying {
+      0% { background-position-y: 0px}
+      100% { background-position-y: calc(-34px*3*4)}
+    }
+    .duckhunt-canvas .duck.alive[direction="N"] {
+      background-position-x: calc(-34px*4*2);
+    }
+    .duckhunt-canvas .duck.alive[direction="NE"] {
+      background-position-x: 0;
+    }
+    .duckhunt-canvas .duck.alive[direction="E"] {
+      background-position-x: calc(-34px*4*1);
+    }
+    .duckhunt-canvas .duck.alive[direction="W"] {
+      background-position-x: calc(-34px*4*1);
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.alive[direction="NW"] {
+      background-position-x: 0;
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.dead {
+      background-position-x: calc(-34px*4*3);
+    }
+    @keyframes duck-falling {
+      0% { background-position-y: calc(-34px*4*1); transform: none; }
+      50% { background-position-y: calc(-34px*4*1); transform: scaleX(-1);}
+    }
+
+    #username-list li, #password-list li {
+        width: calc(7px*4);
+        height: calc(7px*4);
+    }
+}
+
+/* 5x */
+@media only screen and (min-width: 1380px) and (min-height: 1300px){
+    .duckhunt-canvas .background,
+    .duckhunt-canvas .full-canvas {
+      width: calc(256px * 5);
+      height: calc(240px * 5);
+    }
+
+    .duckhunt-canvas .ui {
+      width: calc(256px * 5);
+      height: calc(35px * 5);
+    }
+
+    .duckhunt-canvas .login-button,
+    .duckhunt-canvas .full-canvas {
+      bottom: calc(14px * 5);
+      right: calc(14px * 5);
+      width: calc(53px * 5);
+      height: calc(21px * 5);
+    }
+
+    .duckhunt-canvas .duck {
+      width: calc(34px * 5);
+      height: calc(34px * 5);
+      background-size: calc(34px*4*5) calc(34px*3*5);
+    }
+
+    .duck-wrapper .sign {
+      width: calc(20px * 5);
+      height: calc(36px * 5);
+      background-size: calc(760px*5) calc(36px*5);
+    }
+
+    @keyframes duck-flying {
+      0% { background-position-y: 0px}
+      100% { background-position-y: calc(-34px*3*5)}
+    }
+    .duckhunt-canvas .duck.alive[direction="N"] {
+      background-position-x: calc(-34px*5*2);
+    }
+    .duckhunt-canvas .duck.alive[direction="NE"] {
+      background-position-x: 0;
+    }
+    .duckhunt-canvas .duck.alive[direction="E"] {
+      background-position-x: calc(-34px*5*1);
+    }
+    .duckhunt-canvas .duck.alive[direction="W"] {
+      background-position-x: calc(-34px*5*1);
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.alive[direction="NW"] {
+      background-position-x: 0;
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.dead {
+      background-position-x: calc(-34px*5*3);
+    }
+    @keyframes duck-falling {
+      0% { background-position-y: calc(-34px*5*1); transform: none; }
+      50% { background-position-y: calc(-34px*5*1); transform: scaleX(-1);}
+    }
+
+    #username-list li, #password-list li {
+        width: calc(7px*5);
+        height: calc(7px*5);
+    }
+}
+
+/* 6x */
+@media only screen and (min-width: 1636px) and (min-height: 1540px){
+    .duckhunt-canvas .background,
+    .duckhunt-canvas .full-canvas {
+      width: calc(256px * 6);
+      height: calc(240px * 6);
+    }
+
+    .duckhunt-canvas .ui {
+      width: calc(256px * 6);
+      height: calc(35px * 6);
+    }
+
+    .duckhunt-canvas .login-button {
+      bottom: calc(14px * 6);
+      right: calc(14px * 6);
+      width: calc(53px * 6);
+      height: calc(21px * 6);
+    }
+
+    .duckhunt-canvas .duck {
+      width: calc(34px * 6);
+      height: calc(34px * 6);
+      background-size: calc(34px*4*6) calc(34px*3*6);
+    }
+
+    .duck-wrapper .sign {
+      width: calc(20px * 6);
+      height: calc(36px * 6);
+      background-size: calc(760px*6) calc(36px*6);
+    }
+
+    @keyframes duck-flying {
+      0% { background-position-y: 0px}
+      100% { background-position-y: calc(-34px*3*6)}
+    }
+    .duckhunt-canvas .duck.alive[direction="N"] {
+      background-position-x: calc(-34px*6*2);
+    }
+    .duckhunt-canvas .duck.alive[direction="NE"] {
+      background-position-x: 0;
+    }
+    .duckhunt-canvas .duck.alive[direction="E"] {
+      background-position-x: calc(-34px*6*1);
+    }
+    .duckhunt-canvas .duck.alive[direction="W"] {
+      background-position-x: calc(-34px*6*1);
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.alive[direction="NW"] {
+      background-position-x: 0;
+      transform: scaleX(-1);
+    }
+    .duckhunt-canvas .duck.dead {
+      background-position-x: calc(-34px*6*3);
+    }
+    @keyframes duck-falling {
+      0% { background-position-y: calc(-34px*6*1); transform: none; }
+      50% { background-position-y: calc(-34px*6*1); transform: scaleX(-1);}
+    }
+
+    #username-list li, #password-list li {
+        width: calc(7px*6);
+        height: calc(7px*6);
+    }
+
+}
