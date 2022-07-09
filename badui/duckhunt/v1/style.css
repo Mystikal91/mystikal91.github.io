@@ -186,22 +186,27 @@ body.enable-effect .duckhunt-canvas.playing:active div {
 body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
   animation: flashing-white 0.08s step-start 1, duck-flying 0.20s steps(3) infinite alternate;
 }
-
-.credential-wrapper ul {
-    list-style: none;
+.credential-wrapper {
+  position: absolute;
+}
+.credential-wrapper div {
+    display: inline-block;
     position: absolute;
-    left: 34%;
+    left: 38%;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
 }
 
 #username-list {
-    top: 9%;
+    top: 86.7%;
 }
 
 #password-list {
-    top: 32%;
+    top: 90%;
 }
 
-#username-list li, #password-list li {
+#username-list div, #password-list div {
     width: calc(7px);
     height: calc(7px);
     display: inline-block;
@@ -212,7 +217,7 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
     background-image: url("./assets/alphabet.png");
 }
 
-.credential-wrapper li.cursor {
+.credential-wrapper div.cursor {
   animation: blinking 1s steps(1) infinite;
   background-position-x: calc(36/37*100%) !important;
 }
@@ -306,7 +311,7 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       50% { background-position-y: calc(-34px*2*1); transform: scaleX(-1);}
     }
 
-    #username-list li, #password-list li {
+    #username-list div, #password-list div {
         width: calc(7px*2);
         height: calc(7px*2);
     }
@@ -373,7 +378,7 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       0% { background-position-y: calc(-34px*3*1); transform: none; }
       50% { background-position-y: calc(-34px*3*1); transform: scaleX(-1);}
     }
-    #username-list li, #password-list li {
+    #username-list div, #password-list div {
         width: calc(7px*3);
         height: calc(7px*3);
     }
@@ -441,7 +446,7 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       50% { background-position-y: calc(-34px*4*1); transform: scaleX(-1);}
     }
 
-    #username-list li, #password-list li {
+    #username-list div, #password-list div {
         width: calc(7px*4);
         height: calc(7px*4);
     }
@@ -509,7 +514,7 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       50% { background-position-y: calc(-34px*5*1); transform: scaleX(-1);}
     }
 
-    #username-list li, #password-list li {
+    #username-list div, #password-list div {
         width: calc(7px*5);
         height: calc(7px*5);
     }
@@ -576,7 +581,7 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       50% { background-position-y: calc(-34px*6*1); transform: scaleX(-1);}
     }
 
-    #username-list li, #password-list li {
+    #username-list div, #password-list div {
         width: calc(7px*6);
         height: calc(7px*6);
     }

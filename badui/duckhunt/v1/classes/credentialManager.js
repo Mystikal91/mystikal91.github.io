@@ -19,14 +19,14 @@ class CredentialManager {
                 this.#current = Math.abs(this.#current-1);
                 if (this.#length[this.#current]==this.#max_element)
                     return;
-                element = this.#$dom[this.#current].children('li').eq(this.#length[this.#current]);
+                element = this.#$dom[this.#current].children('div').eq(this.#length[this.#current]);
                 element.addClass('cursor');
                 break;
             case '37': // Backspace
                 if (this.#length[this.#current]==0)
                     return;
                 this.#$dom[this.#current].children('.cursor').removeClass('cursor');
-                var element = (this.#$dom[this.#current]).children('li').eq(this.#length[this.#current]-1);
+                var element = (this.#$dom[this.#current]).children('div').eq(this.#length[this.#current]-1);
                 element.css('background-position-x', '');
                 element.addClass('cursor');
                 this.#length[this.#current]--;
@@ -38,7 +38,7 @@ class CredentialManager {
                 if (this.#current==1)
                     char = 37; // Change to duck
 
-                var element = this.#$dom[this.#current].children('li').eq(this.#length[this.#current]);
+                var element = this.#$dom[this.#current].children('div').eq(this.#length[this.#current]);
                 element.css('background-position-x', char/37*100+'%');
                 element.removeClass('cursor');
 
@@ -47,7 +47,7 @@ class CredentialManager {
                 if (this.#length[this.#current]==this.#max_element)
                     return;
 
-                element = this.#$dom[this.#current].children('li').eq(this.#length[this.#current]);
+                element = this.#$dom[this.#current].children('div').eq(this.#length[this.#current]);
                 element.addClass('cursor');
                 break;
         }
