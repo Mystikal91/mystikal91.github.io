@@ -28,7 +28,6 @@ $(document).ready(function() {
 
     $("#click-to-play").on("click", function(b) {
         $("#ui").removeClass("d-none");
-        $("#credential-wrapper").removeClass("d-none");
         $("#login-button").removeClass("d-none");
         $("#click-to-play").addClass("d-none");
         $(".duckhunt-canvas").addClass("playing");
