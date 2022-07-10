@@ -186,11 +186,21 @@ body.enable-effect .duckhunt-canvas.playing:active div {
 body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
   animation: flashing-white 0.08s step-start 1, duck-flying 0.20s steps(3) infinite alternate;
 }
+.credential-wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+}
 
 .credential-wrapper ul {
     list-style: none;
     position: absolute;
-    left: 34%;
+    left: 38%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    letter-spacing: 1.5px;
 }
 
 #username-list {
@@ -306,11 +316,14 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       50% { background-position-y: calc(-34px*2*1); transform: scaleX(-1);}
     }
 
+    .credential-wrapper ul {
+        letter-spacing: calc(1.5px*2);
+    }
+
     #username-list li, #password-list li {
         width: calc(7px*2);
         height: calc(7px*2);
     }
-
 }
 
 /* 3x */
@@ -373,6 +386,11 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       0% { background-position-y: calc(-34px*3*1); transform: none; }
       50% { background-position-y: calc(-34px*3*1); transform: scaleX(-1);}
     }
+
+    .credential-wrapper ul {
+        letter-spacing: calc(1.5px*3);
+    }
+
     #username-list li, #password-list li {
         width: calc(7px*3);
         height: calc(7px*3);
@@ -439,6 +457,10 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
     @keyframes duck-falling {
       0% { background-position-y: calc(-34px*4*1); transform: none; }
       50% { background-position-y: calc(-34px*4*1); transform: scaleX(-1);}
+    }
+
+    .credential-wrapper ul {
+        letter-spacing: calc(1.5px*4);
     }
 
     #username-list li, #password-list li {
@@ -509,6 +531,10 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
       50% { background-position-y: calc(-34px*5*1); transform: scaleX(-1);}
     }
 
+    .credential-wrapper ul {
+        letter-spacing: calc(1.5px*5);
+    }
+
     #username-list li, #password-list li {
         width: calc(7px*5);
         height: calc(7px*5);
@@ -574,6 +600,10 @@ body.enable-effect .duckhunt-canvas.playing:active .duck.alive {
     @keyframes duck-falling {
       0% { background-position-y: calc(-34px*6*1); transform: none; }
       50% { background-position-y: calc(-34px*6*1); transform: scaleX(-1);}
+    }
+
+    .credential-wrapper ul {
+        letter-spacing: calc(1.5px*6);
     }
 
     #username-list li, #password-list li {
